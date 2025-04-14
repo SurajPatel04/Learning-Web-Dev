@@ -9,4 +9,4 @@ connectDB();
 
 app.use("/api/url", urlRoute);
 
-app.listen(8001, () => console.log("Server is started at 8000"));
+app.listen(8001, () => console.log("Server is started at 8001"));

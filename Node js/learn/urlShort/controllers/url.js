@@ -37,4 +37,17 @@ const handleShortUrl = async (req, res) => {
   return res.redirect(entry.redirectURL);
 };
 
-export { handleGenerateNewShortURL, handleShortUrl };
+const handleAnalytics = async (req, res) => {
+  const shortId = req.params.shortId;
+  const result = await URL.findOne({ shortId });
+
+  if (!result) {
+    return res.status(404).json({ msg: "Not found" });
+  }
+
+  return res.status(200).json({
+    total_visit: result.visitHistory.length,
+    visits: result.visitHistory,
+  });
+};
+export { handleGenerateNewShortURL, handleShortUrl, handleAnalytics };
