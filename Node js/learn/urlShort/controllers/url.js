@@ -2,6 +2,8 @@ import { nanoid } from "nanoid";
 
 import URL from "../models/url.js";
 const handleGenerateNewShortURL = async (req, res) => {
+  const contentTyoe = req.headers["content-type"]
+
   const body = req.body;
   const shortId = nanoid(8);
   if (!body.url) {
@@ -13,6 +15,12 @@ const handleGenerateNewShortURL = async (req, res) => {
     redirectURL: body.url,
     visitHistory: [],
   });
+
+  if(contentTyoe?.includes('application/x-www-form-urlencoded')){
+    return res.render("home",{
+      id: shortId
+    })
+  }
 
   return res.status(200).json({ shorId: shortId });
 };

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Pag</title>
+</head>
+<body>
+    <h1>URL Shortener</h1>
+    <div>
+        <form action="/api/url" method="POST">
+            <label for="">Enter Your Original URL</label>
+            <input type="text" name="url" placeholder="Paste url here">
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+    <% if (locals.id) { %>
+     <p>Url Generated: http//:localhost8001/api/url/<%= id%> </p>
+    <% } %>
+</body>
+</html>
