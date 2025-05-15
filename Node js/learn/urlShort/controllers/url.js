@@ -14,6 +14,7 @@ const handleGenerateNewShortURL = async (req, res) => {
     shortId: shortId,
     redirectURL: body.url,
     visitHistory: [],
+    createdBy: req.user._id,
   });
 
   if(contentTyoe?.includes('application/x-www-form-urlencoded')){
